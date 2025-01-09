@@ -38,7 +38,7 @@ class Instagram
     {
         $client_id = $this->client_id;
         $redirect = $this->redirectUriForProfile($profile->id);
-        
+
         return "https://www.instagram.com/oauth/authorize?enable_fb_login=0&force_authentication=1&client_id=$client_id&redirect_uri=$redirect&scope=instagram_business_basic&response_type=code&state={$profile->identity_token}";
     }
 
@@ -63,7 +63,7 @@ class Instagram
 
     public function fetchUserDetails($access_token)
     {
-        Log::info(json_encode($access_token));
+        Log::info($access_token);
         $url = sprintf(self::GRAPH_USER_INFO_FORMAT, $access_token['user_id'], $access_token['access_token'] ?? $access_token['access_code']);
         return SimpleClient::get($url);
     }
