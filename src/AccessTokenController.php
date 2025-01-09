@@ -18,7 +18,7 @@ class AccessTokenController
 
 
         if (!$profile) {
-            Log::error('unable to retrieve IG profile');
+            Log::error(json_encode($request) . ' unable to retrieve IG profile');
             return Redirect::to(Config::get('instagram-feed.failure_redirect_to'));
         }
 
