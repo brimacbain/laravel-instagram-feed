@@ -2,6 +2,7 @@
 
 namespace JustBetter\InstagramFeed;
 
+use Illuminate\Support\Facades\Log;
 use JustBetter\InstagramFeed\Exceptions\BadTokenException;
 use JustBetter\InstagramFeed\Exceptions\HttpException;
 use Illuminate\Support\Facades\Config;
@@ -71,6 +72,7 @@ class Instagram
 
     public function fetchUserDetails($access_token)
     {
+        Log::info(json_encode($access_token));
         $url = sprintf(self::GRAPH_USER_INFO_FORMAT, $access_token['access_token'] ?? $access_token['access_code']);
         return SimpleClient::get($url);
     }
