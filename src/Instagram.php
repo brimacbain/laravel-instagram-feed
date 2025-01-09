@@ -38,17 +38,8 @@ class Instagram
     {
         $client_id = $this->client_id;
         $redirect = $this->redirectUriForProfile($profile->id);
-        $scopes = ['instagram_business_basic'];
-
-        $parameters = [
-            'client_id' => $client_id,
-            'redirect_uri' => $redirect,
-            'response_type' => 'code',
-            'scope' => urlencode(implode(',', $scopes)),
-            'state' => $profile->identity_token,
-        ];
-
-        return 'https://www.instagram.com/oauth/authorize/?' . http_build_query($parameters);
+        
+        return "https://www.instagram.com/oauth/authorize?enable_fb_login=0&force_authentication=1&client_id=$client_id&redirect_uri=$redirect&scope=instagram_business_basic&response_type=code&state={$profile->identity_token}";
     }
 
     private function redirectUriForProfile($profile_id)
