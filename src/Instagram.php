@@ -73,7 +73,7 @@ class Instagram
     public function fetchUserDetails($access_token)
     {
         Log::info(json_encode($access_token));
-        $url = sprintf(self::GRAPH_USER_INFO_FORMAT, $access_token['access_token'] ?? $access_token['access_code']);
+        $url = sprintf(self::GRAPH_USER_INFO_FORMAT, $access_token['user_id'], $access_token['access_token'] ?? $access_token['access_code']);
         return SimpleClient::get($url);
     }
 
