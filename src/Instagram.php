@@ -74,6 +74,7 @@ class Instagram
     {
         Log::info($access_token);
         $url = sprintf(self::GRAPH_USER_INFO_FORMAT, $access_token['user_id'], $access_token['access_token'] ?? $access_token['access_code']);
+        Log::info($url);
         return SimpleClient::get($url);
     }
 
