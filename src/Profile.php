@@ -105,7 +105,7 @@ class Profile extends Model
 
     public function hasInstagramAccess(): bool
     {
-        return !! $this->latestToken();
+        return boolval($this->latestToken());
     }
 
     public function latestToken(): ?AccessToken
